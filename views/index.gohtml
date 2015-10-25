@@ -1,0 +1,7 @@
+<h1>{{.PageTitle}}</h1>
+
+<ul>
+{{ range $index, $element := .WikiTitles }} 
+<li>{{$element}}</li>
+{{ end }}
+</ul>
