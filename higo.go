@@ -1,4 +1,4 @@
-//Package implements a simple wiki HTTP server.
+//Package implements a simple wiki web application.
 package main
 
 import (
