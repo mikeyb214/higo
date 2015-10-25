@@ -1,7 +1,20 @@
+//Package implements a simple wiki web application.
 package main
 
-import "fmt"
+import (
+	"net/http"
+
+	"github.com/mikeyb214/higo/controllers"
+	"github.com/mikeyb214/higo/helpers"
+)
 
 func main() {
-	fmt.Printf("hello, world\n")
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./public/index.html")
+	})
+	http.HandleFunc("/view/", helpers.MakeController(controllers.ViewController))
+	http.HandleFunc("/edit/", helpers.MakeController(controllers.EditController))
+	http.HandleFunc("/save/", helpers.MakeController(controllers.SaveController))
+
+	http.ListenAndServe(":8080", nil)
 }
